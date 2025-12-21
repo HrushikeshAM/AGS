@@ -19,7 +19,6 @@ const Navigation = () => {
     { href: "#about", label: "About" },
     { href: "#gpe", label: "Project GPE" },
     { href: "#impact", label: "Impact" },
-    { href: "#contact", label: "Contact" },
   ];
 
   return (
