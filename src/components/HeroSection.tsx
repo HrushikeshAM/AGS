@@ -14,7 +14,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-36 sm:pt-32 lg:pt-28"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden pt-36 sm:pt-32 lg:pt-28 pb-32"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-gradient-subtle" />
