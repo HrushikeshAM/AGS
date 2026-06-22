@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+@theme {
+  --color-forest-dark: var(--color-forest-dark);
+  --color-forest-medium: var(--color-forest-medium);
+  --color-forest-light: var(--color-forest-light);
+  --color-emerald: var(--color-emerald);
+  --color-cyber-blue: var(--color-cyber-blue);
+  --color-graphite-black: var(--color-graphite-black);
+  --color-graphite-gray: var(--color-graphite-gray);
+  --color-text-main: var(--text-primary);
+  --color-text-muted: var(--text-secondary);
+  --color-border-subtle: var(--border-color);
+  
+  --font-sans: var(--font-plus-jakarta), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-mono: var(--font-orbitron), monospace;
+  
+  --animate-radar: radar 8s linear infinite;
+  --animate-scanline: scanline 6s linear infinite;
+  --animate-pulse-slow: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes radar {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+:root {
+  --background: #f4f7f5;
+  --foreground: #0c1811;
+  --color-forest-dark: #f4f7f5;
+  --color-forest-medium: #e8eee9;
+  --color-forest-light: #cde0d3;
+  --color-graphite-black: #ffffff;
+  --color-graphite-gray: #f8faf9;
+  --color-emerald: #047857;
+  --color-cyber-blue: #1d4ed8;
+  --text-primary: #0c1811;
+  --text-secondary: #4b5563;
+  --border-color: rgba(12, 24, 17, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --shadow-color: rgba(12, 24, 17, 0.05);
+  --text-glow-emerald: none;
+  --text-glow-blue: none;
+  color-scheme: light dark;
+}
+
+html.dark {
+  --background: #020c06;
+  --foreground: #f3f4f6;
+  --color-forest-dark: #020c06;
+  --color-forest-medium: #041f12;
+  --color-forest-light: #083c22;
+  --color-graphite-black: #080a09;
+  --color-graphite-gray: #131715;
+  --color-emerald: #10b981;
+  --color-cyber-blue: #3b82f6;
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --border-color: rgba(255, 255, 255, 0.08);
+  --glass-bg: rgba(8, 10, 9, 0.7);
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --text-glow-emerald: 0 0 10px var(--color-emerald), 0 0 20px rgba(16, 185, 129, 0.15);
+  --text-glow-blue: 0 0 10px var(--color-cyber-blue), 0 0 20px rgba(59, 130, 246, 0.15);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-forest-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-forest-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-emerald);
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-panel-blue {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 8px 32px 0 var(--shadow-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border-color);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card:hover {
+  border-color: var(--color-emerald);
+  box-shadow: 0 0 20px var(--border-color);
+  transform: translateY(-2px);
+}
+
+.glass-card-blue:hover {
+  border-color: var(--color-cyber-blue);
+  box-shadow: 0 0 20px var(--border-color);
+  transform: translateY(-2px);
+}
+
+/* Background Grids & Scans */
+.dot-matrix {
+  background-image: radial-gradient(var(--border-color) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.dot-matrix-blue {
+  background-image: radial-gradient(var(--border-color) 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.grid-matrix {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, var(--border-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-color) 1px, transparent 1px);
+}
+
+.scanline-overlay {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline-overlay::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.08) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.02), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.02));
+  z-index: 2;
+  background-size: 100% 4px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Cybernetic Glows */
+.glow-text-emerald {
+  text-shadow: var(--text-glow-emerald);
+}
+
+.glow-text-blue {
+  text-shadow: var(--text-glow-blue);
+}
+
+.glow-border-emerald {
+  box-shadow: inset 0 0 15px rgba(16, 185, 129, 0.05), 0 0 15px rgba(16, 185, 129, 0.05);
+}
+
+/* Hide canvas default outlines */
+canvas {
+  outline: none;
+}
+
+/* Lenis scroll */
+html.lenis {
+  height: auto;
+}
+.lenis-smooth {
+  scroll-behavior: initial;
+}
+.lenis-smooth [data-lenis-prevent] {
+  overflow: clip;
+}
+.lenis-target {
+  scroll-behavior: inherit;
+}
